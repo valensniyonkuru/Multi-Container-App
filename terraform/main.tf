@@ -49,8 +49,18 @@ resource "aws_security_group" "web_sg" {
   }
 }
 
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+}
+
 resource "aws_instance" "web" {
-  ami           = "ami-07fab34335a28cb43" # Amazon Linux 2 (Eu-Central-1)
+  ami           = data.aws_ami.amazon_linux.id
   instance_type = var.instance_type
   key_name      = aws_key_pair.kp.key_name
   security_groups = [aws_security_group.web_sg.name]
