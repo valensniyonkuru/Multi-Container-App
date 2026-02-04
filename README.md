@@ -6,6 +6,10 @@ This project deploys a two-tier application (Flask + MySQL) on AWS EC2 using Doc
 
 ![Architecture Diagram](image/image.png)
 
+## Application Screenshot
+
+![Webpage Screenshot](image/image%20copy.png)
+
 The application consists of:
 
 - **Web Layer**: Flask application running in a Docker container (port 5000).
